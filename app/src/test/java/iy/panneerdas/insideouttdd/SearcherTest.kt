@@ -12,4 +12,13 @@ class SearcherTest {
 
         assertEquals("Item 1", sut.getResult())
     }
+
+    @Test
+    fun findAnotherMatch() {
+        val sut = Searcher()
+
+        sut.search("Another")
+
+        assertEquals("Another Item", sut.getResult())
+    }
 }
