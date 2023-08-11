@@ -1,23 +1,25 @@
 package iy.panneerdas.insideouttdd
 
+import androidx.lifecycle.MutableLiveData
+
 class Searcher {
-    private var result: String = ""
+    private val searchStateLiveData = MutableLiveData<SearchState>()
 
     fun search(query: String) {
         if (query.isBlank() || query == "abc") {
-            result = "Bad Query"
+            searchStateLiveData.value = SearchState.BadQuery
         } else {
             if (query == "Item") {
-                result = "Item 1"
+                searchStateLiveData.value = SearchState.Match("Item 1")
             } else if (query == "Another") {
-                result = "Another Item"
+                searchStateLiveData.value = SearchState.Match("Another Item")
             } else {
-                result = "No item matching $query"
+                searchStateLiveData.value = SearchState.NoMatchFor("Coffee")
             }
         }
     }
 
-    fun getResult(): String {
-        return result
+    fun searchState(): SearchState? {
+        return searchStateLiveData.value
     }
 }
