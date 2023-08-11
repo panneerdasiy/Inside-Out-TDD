@@ -14,7 +14,7 @@ class Searcher {
             } else if (query == "Another") {
                 searchStateLiveData.value = SearchState.Match("Another Item")
             } else {
-                searchStateLiveData.value = SearchState.NoMatchFor("Coffee")
+                searchStateLiveData.value = SearchState.NoMatchFor(query)
             }
         }
     }
