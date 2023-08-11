@@ -30,4 +30,13 @@ class SearcherTest {
 
         assertEquals("No item matching Coffee", sut.getResult())
     }
+
+    @Test
+    fun blankQuery() {
+        val sut = Searcher()
+
+        sut.search("")
+
+        assertEquals("Bad Query", sut.getResult())
+    }
 }
