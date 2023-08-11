@@ -21,4 +21,13 @@ class SearcherTest {
 
         assertEquals("Another Item", sut.getResult())
     }
+
+    @Test
+    fun findNoMatch() {
+        val sut = Searcher()
+
+        sut.search("Coffee")
+
+        assertEquals("No item matching Coffee", sut.getResult())
+    }
 }
