@@ -39,4 +39,13 @@ class SearcherTest {
 
         assertEquals("Bad Query", sut.getResult())
     }
+
+    @Test
+    fun disallowedQuery() {
+        val sut = Searcher()
+
+        sut.search("abc")
+
+        assertEquals("Bad Query", sut.getResult())
+    }
 }

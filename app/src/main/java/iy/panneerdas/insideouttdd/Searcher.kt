@@ -4,7 +4,7 @@ class Searcher {
     private var result: String = ""
 
     fun search(query: String) {
-        if (query.isBlank()) {
+        if (query.isBlank() || query == "abc") {
             result = "Bad Query"
         } else {
             if (query == "Item") {
