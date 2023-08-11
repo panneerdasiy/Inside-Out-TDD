@@ -2,6 +2,7 @@ package iy.panneerdas.insideouttdd
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -10,10 +11,15 @@ class SearcherTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    private lateinit var sut: Searcher
+
+    @Before
+    fun init() {
+        sut = Searcher()
+    }
+
     @Test
     fun findMatch() {
-        val sut = Searcher()
-
         sut.search("Item")
 
         assertEquals(SearchState.Match("Item 1"), sut.searchState())
@@ -21,8 +27,6 @@ class SearcherTest {
 
     @Test
     fun findAnotherMatch() {
-        val sut = Searcher()
-
         sut.search("Another")
 
         assertEquals(SearchState.Match("Another Item"), sut.searchState())
@@ -30,8 +34,6 @@ class SearcherTest {
 
     @Test
     fun findNoMatch() {
-        val sut = Searcher()
-
         sut.search("Coffee")
 
         assertEquals(SearchState.NoMatchFor("Coffee"), sut.searchState())
@@ -39,8 +41,6 @@ class SearcherTest {
 
     @Test
     fun blankQuery() {
-        val sut = Searcher()
-
         sut.search("")
 
         assertEquals(SearchState.BadQuery, sut.searchState())
@@ -48,8 +48,6 @@ class SearcherTest {
 
     @Test
     fun disallowedQuery() {
-        val sut = Searcher()
-
         sut.search("abc")
 
         assertEquals(SearchState.BadQuery, sut.searchState())
